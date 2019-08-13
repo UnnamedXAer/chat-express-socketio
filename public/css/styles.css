@@ -1,0 +1,162 @@
+:root {
+    --header-height: 50px; /* if changed update globa.js */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+body, html {
+    font: 13px Helvetica, Arial;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: auto;
+    max-width: 1300px;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    padding: 0 15px;
+}
+
+header {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    margin: auto;
+    flex-direction: row;
+}
+
+head > div:first-child {
+    display: flex;
+}
+
+main {
+    margin: auto;
+    width: 100%;
+    height: calc(100% - var(--header-height));
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo div:first-child {
+    height: 100%;
+    background: #5CBFA7;
+    width: 20px;
+}
+
+.logo div:last-child {
+    height: 100%;
+    width: 50px;
+    background: #618EC9;
+}
+
+.mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100vw;
+    background-color: #000;
+    z-index: 100;
+}
+
+.show-mask {
+    height: 100vh; opacity: 0.5;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+}
+
+.hide-mask {
+    height: 0; opacity: 0;
+    transition: height 0ms 400ms, opacity 400ms 0ms;
+}
+
+.theme-slategrey {
+    background: slategrey;
+}
+
+.theme-dark {
+    background: black;
+}
+
+.display-none {
+    display: none!important;
+}
+
+#communicator-wrapper {
+    width: 768px;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+}
+
+@media only screen and (max-width: 768px)  {
+    main, header, body, #communicator-wrapper {
+        width: 100%;
+    }
+
+    body {
+        padding: 0;
+    }
+
+    .logo {
+        margin-left: var(--header-height);
+    }
+}
+
+/***********checkbox - swich *************/
+
+.switch {
+    border-radius: 10px;
+    height: 12px;
+    width: 40px;
+    flex-shrink: 0;
+    background: #ccc;
+    position: relative;
+    transition: background-color 0.3s ease;
+    overflow: visible;
+}
+
+.switch::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 2%;
+    border-radius: 100%;
+    border: 10px solid rgb(150, 150, 150);
+    overflow: visible;
+}
+
+.switch.switch-off::before{
+    transition: 300ms;
+    left: 2%;
+    border-color: rgb(150, 150, 150);
+}
+
+.switch.switch-on::before{
+    transition: 300ms;
+    left: calc(19px);
+    border-color: #019a75;
+
+}
+
+.switch.switch-on {
+    background-color: #7ddcc5;
+}
+
+.switch.switch-off {
+    background-color: #ccc;
+}
+
+/*********** end: checkbox - swich *************/

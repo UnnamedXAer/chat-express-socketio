@@ -1,0 +1,240 @@
+#send-wrapper {
+    width: 100%;
+    overflow: visible;
+}
+
+#user-typing {
+    color: darkred;
+    width: 100%;
+    font-size: 0.8em;
+    height: 12px;
+    padding: 0px 16px;
+}
+
+#send-preview {
+    display: none;
+    color: violet;
+    width: 100%;
+    font-size: 0.8em;
+    margin: 5px;
+    padding: 3px 16px;
+}
+
+#form {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+    height: 45px;
+    padding: 3px;
+    position: relative;
+    overflow: unset;
+}
+
+#send-inputs-wrapper {
+    margin-right: .5%;
+    width: calc(768px - 60px);
+    outline: none;
+    position: relative;
+    overflow: unset;
+    border: 1px solid #5F99B3;
+    display: flex;
+    justify-content: space-between;
+}
+
+#send-input {
+    border: 0;
+    padding: 10px;
+    height: 100%;
+    outline: none;
+    color: #5F99B3;
+    flex: 0 100%;
+}
+
+.send-wrapper-highlight {
+    border: 2px solid #5F99B3!important;
+}
+
+#send-menu-wrapper {
+    height: 100%;
+    z-index: 10;
+    overflow: unset;
+    flex: 0 39px;
+}
+
+#send-menu-wrapper:hover #send-menu-toggler {
+    opacity: 0.8;
+}
+
+#send-menu-toggler {
+    opacity: 0.5;
+    height: 100%;
+    width: 39px;
+    background-image: url('../images/umbrela_32x32.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    cursor: pointer;
+}
+
+.sent-menu-items-wrapper {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: 12px;
+    right: 0;
+    min-width: 220px;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    overflow: unset;
+    background: white;
+}
+
+.sent-menu-items-wrapper * {
+    opacity: 1;
+}
+
+.sent-menu-items-wrapper::after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: -6px 0px 0px -24px;
+    top: 100%;
+    left: 100%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 12px;
+    transform: rotate(90deg);
+    border-color: transparent transparent transparent #fff;
+    filter: drop-shadow(1px 0 0 #ccc) drop-shadow(0 .5px 0 #CCC);
+}
+
+.sent-menu-items-wrapper .send-menu-row:last-child{
+    border-bottom: none;
+}
+
+.send-menu-row {
+    width: 100%;
+    height: 36px;
+    border-bottom: 1px solid #eee;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: row;
+    overflow: unset;
+}
+
+.send-menu-item {
+    outline: none;
+    height: 100%;
+    max-width: 100%;
+    padding: 3px;
+    flex: 1;
+    border-right: 1px solid #eee;
+    cursor: pointer;
+}
+
+.send-menu-row .send-menu-item:last-child{
+    border-right: none;
+}
+
+.send-menu-item img {
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+
+.send-menu-item div {
+    height: 100%;
+}
+
+.send-menu-item:hover {
+    background: #eee;
+}
+
+.send-menu-item ul {
+    overflow: unset;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.send-menu-item ul li {
+    height: 35px;
+    padding: 5px 5px;
+    flex-grow: 0;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    flex: 0 33.3333333333333333333333333%;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: cursive;
+    font-variant: all-small-caps;
+    text-align: center;
+}
+
+.send-menu-item ul li:hover {
+    background: #eee;
+}
+
+.send-menu-item ul li.nope-go {
+    flex: 0 50%;
+}
+
+#times {
+    position: relative;
+    height: 100%;
+    overflow: unset;
+}
+
+#times-list {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    margin-bottom: 12px;
+    min-width: 160px;
+    height: unset;
+    background: white;
+    border: 1px solid #ccc;
+    overflow: unset;
+}
+
+#times-list li:nth-child(4n+1):nth-last-child(-n+4),
+#times-list li:nth-child(4n+1):nth-last-child(-n+4) ~ li {
+    border-bottom: none;
+}
+#times-list::after {
+    content: '';
+    display: block;
+    position: absolute;
+    margin: -6px 0px 0px -24px;
+    top: 100%;
+    left: 100%;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 0 12px 12px;
+    transform: rotate(90deg);
+    border-color: transparent transparent transparent #fff;
+    filter: drop-shadow(1px 0 0 #ccc) drop-shadow(0 .5px 0 #CCC);
+}
+
+#send-button {
+    float: right;
+    height: 100%;
+    width: 55px;
+    background: white;
+    border: 1px solid #5F99B3;
+    padding: 10px;
+    background-image: url('../images/send.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+}
+
+#send-button:active {
+    border: #5F99B3 2px solid;
+}

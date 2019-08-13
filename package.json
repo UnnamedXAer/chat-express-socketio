@@ -1,0 +1,13 @@
+{
+    "name": "socked-chat-exmaple",
+    "version": "0.0.1",
+    "description": " my first socket.io app",
+    "dependencies": {
+        "consolidate": "^0.15.1",
+        "dotenv": "^8.0.0",
+        "express": "^4.17.1",
+        "socket.io": "^2.2.0",
+        "swig": "^1.4.2",
+        "uuid": "^3.3.2"
+    }
+}

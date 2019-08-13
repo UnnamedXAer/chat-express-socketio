@@ -1,0 +1,98 @@
+
+#settings-wrapper {
+    position: relative;
+    height: 100%;
+    min-width: 22%;
+    min-width: 200px;
+    max-width: 78%;
+    transition: transform 0.5s ease-out;
+}
+
+#settings-toggler {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    height: var(--header-height);
+    width: var(--header-height);
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 3px;
+    display: none;
+    z-index: 200;
+}
+
+.aside-move-left {
+    transform: translateX(0);
+}
+
+@media only screen and (max-width: 768px) {
+    #settings-toggler {
+        display: flex;
+    }
+
+    #settings-wrapper {
+        z-index: 150;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 80%;
+        max-width: 270px;
+        background: white;
+        padding-top: var(--header-height);
+    }
+
+    .aside-move-right {
+        transform: translateX(0);
+    }
+    
+    .aside-move-left {
+        transform: translateX(-100%);
+    }
+}
+
+#settings-items {
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    overflow: auto;
+    height: 100%;
+}
+
+#settings-toggler div {
+    width: 90%;
+    border: 3px solid #5F99B3;
+    transition: transform 1s ease-out;
+}
+
+.settings-toggler-open > div:first-of-type {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+
+.settings-toggler-open > div:nth-of-type(3) {
+    transform: rotate(-45deg) translate(10px, -10px);
+}
+
+.settings-toggler-open > div:nth-of-type(2) {
+    transform: scale(0);
+}
+
+#settings-wrapper label {
+    display: block;
+    margin: 10px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    overflow: visible;
+}
+#settings-wrapper label.flex-direction-column {
+    flex-direction: column;
+}
+
+#settings-wrapper label input {
+    padding: 0 3px;
+}
+
+#version-label {
+    color: rgba(0, 0, 0, 0.7);
+}

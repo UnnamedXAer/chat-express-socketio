@@ -1,0 +1,94 @@
+#user-list-wrapper {
+    height: 100%;
+    width: 22%;
+    overflow: auto;
+    padding-bottom: 3px;
+    position: relative;
+    overflow: unset;
+    transition: transform 0.5s ease-out;
+    background: white;
+}
+
+#user-list-toggler {
+    width: var(--header-height);
+    height: var(--header-height);/* var(--header-height); */
+    display: none;
+     /* to move element to right */
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: visible;
+    z-index: 200;
+}
+
+@media only screen and (max-width: 768px) {
+    #user-list-wrapper {
+        padding-top: var(--header-height);
+        position: absolute;
+        top: 0;
+        left: 100%;
+        z-index: 150;
+    }
+
+    #user-list-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.user {
+    margin: 7px 10px;
+    font-size: 0.9em;
+}
+
+.user > .info {
+    font-size: 0.8em;
+    margin-bottom: 2px;
+    color: rgb(189, 186, 186);
+}
+
+.user-me::before {
+    content: "» ";
+    color: goldenrod;
+}
+
+#user-list-toggler .arrow {
+    border: solid #5F99B3;
+    border-width: 0px 7px 7px 0px;
+    padding: 4.5px;
+    transform: rotate(135deg);
+}
+
+.user-list-toggler-opened > div {
+    animation-name: user-list-toggler-opened;
+    animation-duration: 0.6s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+    animation-delay: 0.2s;
+}
+
+.user-list-toggler-closed > div {
+    animation-name: user-list-toggler-closed;
+    animation-duration: 0.6s;
+    animation-fill-mode: both;
+    animation-timing-function: ease-out;
+}
+
+@keyframes user-list-toggler-opened {
+    0% {
+        border-width: 0px 7px 7px 0px;
+    }
+    100% {
+        border-width: 7px 0px 0px 7px;
+    }
+}
+
+@keyframes user-list-toggler-closed {
+    0% {
+        border-width: 7px 0px 0px 7px;
+    }
+    100% {
+        border-width: 0px 7px 7px 0px;
+    }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loading</title>
+
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+    <link rel="stylesheet" href="/css/lmask.css" type="text/css">
+    <link rel="stylesheet" href="/css/settings.css" type="text/css">
+    <link rel="stylesheet" href="/css/send.css" type="text/css">
+    <link rel="stylesheet" href="/css/messages.css" type="text/css">
+    <link rel="stylesheet" href="/css/users.css" type="text/css">
+</head>
+<body>
+    <div id='lmask'></div>
+    <div class='mask mask-aside'></div>
+    <div class='mask mask-file'></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/3PartApi/uuidv4.js"></script>
+    <script src="/js/3PartApi/jquery-1.11.1.js"></script>
+    <script src="/js/globals.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/settings.js"></script>
+    <script src="/js/messages.js"></script>
+    <script src="/js/users.js"></script>
+    <script src="/js/crypto-init.js"></script>
+    <script src="/js/onLoad.js"></script>
+    <header>
+        <div class="logo">
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+    <div id="user-list-toggler">
+        <div class="arrow"></div>
+        <div class="arrow"></div>
+    </div>
+    <div id="settings-toggler" class="settings-toggler-close">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    <main>
+        <div id="settings-wrapper" class="aside-move-left">
+            <div id="settings-items">
+                <label class="flex-direction-column">
+                    <span>Nick:</span>
+                    <input type="text" id="nick" placeholder="Your nick here please" >
+                </label>
+                <label class="flex-direction-column">
+                    <span>Theme:</span>
+                    <select name="theme" id="theme" >
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="slategrey">Slategrey</option>
+                    </select>
+                </label>
+                <label class="flex-direction-column">
+                    <span>Messages font size:</span>
+                    <input type="text" id="message-font-size" placeholder="Font size with units eg. 0.9em" >
+                </label>
+                <label>
+                    <span>Play sounds:</span>
+                    <div id="play-audio" class="switch switch-off"></div>
+                </label>
+                <label for="audio-volume">
+                    <span>Volume:</span>
+                    <input type="range" id="audio-volume" name="audio-volume" min="0" max="1" step="0.01">
+                </label>
+                <label>
+                    <span>Push desktop notifications:</span>
+                    <div id="push-notifications" class="switch switch-off"></div>
+                </label>
+                <label>
+                    <span>Show text in notifications:</span>
+                    <div id="show-body-in-notifications" class="switch switch-off"></div>
+                </label>
+                <label for="notification-permission-state">
+                    <span>Notification permition status:</span>
+                    <select name="notification-permission-state" id="notification-permission-state" disabled>
+                        <option value="default">default</option>
+                        <option value="granted">granted</option>
+                        <option value="denied">denied</option>
+                    </select>
+                </label>
+                <label id="version-label">
+                    Version: <span></span>
+                </label>
+                <button class="display-none" id="force-refresh">force refresh</button>
+            </div>
+        </div>
+
+        <div id="communicator-wrapper">
+            <div id="messages-wrapper">
+                <div id="messages">
+
+                    <!-- Menu for messages, placed here for start and will be moved to target message when called. -->
+                    <div class="message-menu display-none">
+                        <div class="message-menu-item" id="message-menu-selectall"><img src="../images/message-menu-item-selectall.svg"></div>
+                        <div class="message-menu-item" id="message-menu-copy"><img src="../images/message-menu-item-copy.svg"></div>
+                        <div class="message-menu-item" id="message-menu-search"><img src="../images/message-menu-item-search.svg"></div>
+                        <i></i>
+                    </div>
+                    <!-- -->
+                </div>
+            </div>
+
+            <div id="send-wrapper">
+                <div id="attachments-preview-send" class="attachments-preview"></div>
+                <div id="user-typing"></div>
+                <form id="form" contenteditable="contenteditable" spellcheck="true">
+                    <div id="send-inputs-wrapper" tabindex="0">
+                        <input type="text" id="send-input" autocomplete="off" spellcheck="true" />
+                        <div id="send-menu-wrapper">
+                            <div id="send-menu-toggler" tabindex="1"></div>
+                        <!-- start: send-inputs-wrapper -->
+                        <div class="sent-menu-items-wrapper display-none">
+                            <div class="send-menu-row">
+                                <div class="send-menu-item" id="works-for-me">
+                                    <div><img src="../images/send-menu-item-works-for-me.png"></div>
+                                </div>
+                                <div class="send-menu-item" id="question">
+                                    <div><img src="../images/send-menu-item-question.svg"></div>
+                                </div>
+                                <div class="send-menu-item" id="unlike">
+                                    <!-- image is rotated (180 deg) -->
+                                    <div><img src="../images/send-menu-item-like.svg"></div>
+                                </div>
+                                <div class="send-menu-item" id="like">
+                                    <div><img src="../images/send-menu-item-like.svg"></div>
+                                </div>
+                                <div class="send-menu-item" id="dinner">
+                                    <div><img src="../images/send-menu-item-dinner.svg"></div>
+                                </div>
+                                <div class="send-menu-item" id="drink">
+                                    <div><img src="../images/send-menu-item-drink.svg"></div>
+                                </div>
+                                <div class="send-menu-item" id="times">
+                                    <div><img src="../images/send-menu-item-stopwatch.svg"></div>
+                                    <div class="display-none" id="times-list">
+                                        <ul>
+                                            <li class="time nope-go" id="time-nope">nope</li>
+                                            <li class="time nope-go" id="time-go">go</li>
+                                            <li class="time" id="time-2h">2 h</li>
+                                            <li class="time" id="time-1h">1 h</li>
+                                            <li class="time" id="time-30min">30 min</li>
+                                            <li class="time" id="time-20min">20 min</li>
+                                            <li class="time" id="time-10min">10 min</li>
+                                            <li class="time" id="time-5min">5 min</li>
+                                            <li class="time" id="time-3min">3 min</li>
+                                            <li class="time" id="time-2min">2 min</li>
+                                            <li class="time" id="time-1min">1 min</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end: send-inputs-wrapper -->
+                        </div>
+                        </div>
+                    </div>
+                    <button id="send-button"></button>
+                </form>
+            </div>
+        </div>
+        <div id="user-list-wrapper" class="aside-move-right">
+            <ul id='users-list'>
+            </ul>
+        </div>
+    </main> 
+</body>
+</html>
