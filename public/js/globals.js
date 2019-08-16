@@ -1,7 +1,7 @@
 const APP = {
     title: 'sszat',
     header_height: "50px", /* if change update style.css */
-    version: "1.1.2",
+    version: "1.2.1",
     environment: ""
 };
 var socket = null;

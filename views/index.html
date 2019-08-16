@@ -23,9 +23,9 @@
     <script src="/js/globals.js"></script>
     <script src="/js/utils.js"></script>
     <script src="/js/settings.js"></script>
-    <script src="/js/messages.js"></script>
     <script src="/js/users.js"></script>
     <script src="/js/crypto-init.js"></script>
+    <script src="/js/messages.js"></script>
     <script src="/js/onLoad.js"></script>
     <header>
         <div class="logo">
@@ -54,7 +54,7 @@
                     <select name="theme" id="theme" >
                         <option value="light">Light</option>
                         <option value="dark">Dark</option>
-                        <option value="slategrey">Slategrey</option>
+                        <!-- <option value="slategrey">Slategrey</option> -->
                     </select>
                 </label>
                 <label class="flex-direction-column">
@@ -65,7 +65,7 @@
                     <span>Play sounds:</span>
                     <div id="play-audio" class="switch switch-off"></div>
                 </label>
-                <label for="audio-volume">
+                <label for="audio-volume" class="flex-wrap">
                     <span>Volume:</span>
                     <input type="range" id="audio-volume" name="audio-volume" min="0" max="1" step="0.01">
                 </label>

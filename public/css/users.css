@@ -1,12 +1,22 @@
 #user-list-wrapper {
     height: 100%;
     width: 22%;
-    overflow: auto;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
+    padding-top: 5px;
     position: relative;
     overflow: unset;
     transition: transform 0.5s ease-out;
     background: white;
+}
+
+#user-list-wrapper ul {
+    height: 100%;
+    overflow: auto;
+}
+
+.theme-dark #user-list-wrapper {
+    background: rgb(39, 39, 39);
+    color: #cccccc;
 }
 
 #user-list-toggler {
@@ -42,10 +52,28 @@
     font-size: 0.9em;
 }
 
+.theme-dark .user {
+    border-bottom: 0.5px solid #3b3c3b;
+}
+
+.theme-dark .user:hover {
+    color: #eeeeee;
+    cursor: default;
+}
+
+.theme-dark .user:last-child {
+    border-bottom: none;
+}
+
 .user > .info {
     font-size: 0.8em;
     margin-bottom: 2px;
     color: rgb(189, 186, 186);
+}
+
+.theme-dark .user:hover > .info {
+    color: #cccccc;
+    cursor: default;
 }
 
 .user-me::before {

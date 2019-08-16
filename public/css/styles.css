@@ -9,6 +9,10 @@
     overflow: hidden;
 }
 
+html {
+    scrollbar-color: #eee #444444(39, 39, 39);
+}
+
 body, html {
     font: 13px Helvetica, Arial;
     height: 100%;
@@ -24,12 +28,24 @@ body {
     padding: 0 15px;
 }
 
+.theme-dark {
+    background: #1e1e1e;
+}
+
+.display-none {
+    display: none!important;
+}
+
 header {
     display: flex;
     height: 50px;
     width: 100%;
     margin: auto;
     flex-direction: row;
+}
+
+.theme-dark header {
+    background-color: rgba(80, 80, 80, 0.6);
 }
 
 head > div:first-child {
@@ -81,18 +97,6 @@ main {
     transition: height 0ms 400ms, opacity 400ms 0ms;
 }
 
-.theme-slategrey {
-    background: slategrey;
-}
-
-.theme-dark {
-    background: black;
-}
-
-.display-none {
-    display: none!important;
-}
-
 #communicator-wrapper {
     width: 768px;
     height: 100%;
@@ -125,6 +129,7 @@ main {
     position: relative;
     transition: background-color 0.3s ease;
     overflow: visible;
+    margin: 0 3px;
 }
 
 .switch::before {
@@ -132,7 +137,7 @@ main {
     content: "";
     position: absolute;
     top: -4px;
-    left: 2%;
+    left: -1px;
     border-radius: 100%;
     border: 10px solid rgb(150, 150, 150);
     overflow: visible;
@@ -140,23 +145,83 @@ main {
 
 .switch.switch-off::before{
     transition: 300ms;
-    left: 2%;
+    left: -1px;
     border-color: rgb(150, 150, 150);
 }
 
-.switch.switch-on::before{
+.switch.switch-on::before {
     transition: 300ms;
-    left: calc(19px);
+    left: 22px;
     border-color: #019a75;
-
 }
 
 .switch.switch-on {
     background-color: #7ddcc5;
 }
 
+.theme-dark .switch.switch-on::before {
+    left: 23px;
+}
+
 .switch.switch-off {
     background-color: #ccc;
 }
 
+
+.theme-dark .switch,
+.theme-dark .switch::before {
+    border-radius: 0
+}
+
+.theme-dark .switch::before {
+    top: -2px;
+    border-width: 8px;
+}
+
+.theme-dark .switch.switch-on::before {
+    left: 25px;
+}
+
 /*********** end: checkbox - swich *************/
+
+/* scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    background: white;
+}
+
+.theme-dark ::-webkit-scrollbar {
+    background: none;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #ccc;
+}
+
+.theme-dark ::-webkit-scrollbar-track:hover {
+    box-shadow: inset 0 0 5px #eee;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.theme-dark ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* FF */ 
+html.theme-dark {
+    scrollbar-color: #444444 rgb(39, 39, 39);
+}
+
+/* end: scrollbar */

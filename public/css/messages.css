@@ -5,11 +5,10 @@
     overflow: visible;
 }
 
-#messages::-webkit-scrollbar { display: none; }
 #messages {
     list-style-type: none;
     padding: 0 0 0 0;
-    overflow-y: scroll;
+    overflow: auto;
     margin: 0;
     height: 100%;
 }
@@ -189,8 +188,8 @@ img {
     min-width: 120px;
     background-color: rgb(241, 245, 252);
     border: rgb(217, 228, 248) 1px solid;
-    box-shadow: 0 3px 5px rgb(221, 228, 243);
-    border-radius: 7px;
+    /* box-shadow: 0 3px 5px rgb(221, 228, 243); */
+    /* border-radius: 7px; */
     padding: 5px 10px;
     overflow: visible;
     display: flex;

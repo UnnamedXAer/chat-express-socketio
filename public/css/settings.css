@@ -6,6 +6,7 @@
     min-width: 200px;
     max-width: 78%;
     transition: transform 0.5s ease-out;
+    padding: 5px 0;
 }
 
 #settings-toggler {
@@ -25,6 +26,74 @@
 .aside-move-left {
     transform: translateX(0);
 }
+
+.theme-dark #settings-wrapper {
+    background: rgb(39, 39, 39);
+    color: #cccccc;
+}
+
+.theme-dark #settings-wrapper input, 
+.theme-dark #settings-wrapper select, 
+.theme-dark #settings-wrapper option {
+    background-color: #444444;
+    border: none;
+    color: #cccccc;
+    padding: 3px 0;
+    -moz-appearance: none; /* Gecko */
+}
+
+.theme-dark #settings-wrapper input {
+    background-color: #444444;
+    border: none;
+    padding: 3px;
+}
+
+/* input[type=range] */
+.theme-dark input[type=range] {
+  height: 18px;
+  -webkit-appearance: none;
+  margin: 0px 0;
+  background-color: rgb(39, 39, 39);
+  padding: 0;
+}
+.theme-dark input[type=range]:focus {
+  outline: none;
+}
+.theme-dark input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #50555C;
+}
+.theme-dark input[type=range]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #000000;
+  height: 14px;
+  width: 19px;
+  background: #529DE1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3px;
+}
+
+/* FF */
+.theme-dark input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  background: #50555C;
+  border: 0px solid #000000;
+}
+.theme-dark input[type=range]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000;
+  border: 0px solid #000000;
+  border-radius: 0;
+  height: 14px;
+  width: 19px;
+  background: #529DE1;
+  cursor: pointer;
+}
+/* end input[type=range] */
 
 @media only screen and (max-width: 768px) {
     #settings-toggler {
@@ -89,10 +158,26 @@
     flex-direction: column;
 }
 
+#settings-wrapper label.flex-wrap {
+    flex-wrap: wrap;
+}
+
+#settings-wrapper label.flex-wrap input {
+    width: 100%;
+}
+
 #settings-wrapper label input {
     padding: 0 3px;
 }
 
-#version-label {
+#settings-wrapper #notification-permission-state {
+    min-width: 70px;
+}
+
+#settings-wrapper #version-label {
     color: rgba(0, 0, 0, 0.7);
+}
+
+.theme-dark #settings-wrapper #version-label {
+    color: rgba(204, 204, 204, 0.7);
 }
