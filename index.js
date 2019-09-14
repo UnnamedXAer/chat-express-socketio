@@ -5,15 +5,19 @@ const cons = require('consolidate');
 const uuid = require('uuid');
 const fs = require('fs');
 
-var key = fs.readFileSync(__dirname + '/certs/selfsigned.key');
-var cert = fs.readFileSync(__dirname + '/certs/selfsigned.crt');
-var options = {
+const key = fs.readFileSync(__dirname + '/certs/selfsigned.key');
+const cert = fs.readFileSync(__dirname + '/certs/selfsigned.crt');
+const options = {
     key: key,
     cert: cert
 };
 
 const app = express();
-const http = require('https').createServer(options, app);
+
+// https for local and http for hosting eg. Heroku
+// https is required by browser to push notifications
+const http = ((process.env.HOSTING == "LOCAL") ? require('https').createServer(options, app) : require('http').createServer(app));
+
 const io = require('socket.io')(http);
 
 const routes = require('./routes/routes');

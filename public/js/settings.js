@@ -84,7 +84,10 @@ function settingsNickBlurHandler (ev) {
     updatePlaceholderAsync(nick);
     localStorage.setItem('nick', nick);
     settings["nick"] = nick;
-    $(`#${settings["userId"]}`).text(nick);
+    updateUsersList ({
+        ...CHAT.usersOnline.find(x => x.id === settings['userId']),
+        nick,
+    });
 
     socket.emit('user-data-change', 'nick', nick); // todo mb send "user"
 }

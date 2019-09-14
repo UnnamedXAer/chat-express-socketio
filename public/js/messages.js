@@ -86,6 +86,12 @@ async function appendMessage (msg, isMy) {
 function sendSubmitHandler (ev) {
     ev.preventDefault();
     const text = $('#send-input').val();
+
+    // do not send empty messages
+    if (text == "" && CHAT.currentFiles.length == 0) {
+        return;
+    }
+
     addMsgToHistory(text);
     postMessage({key: 'custom', value: ''}, text, CHAT.currentFiles);
     clearSendSection();
@@ -580,6 +586,7 @@ function sendMenuItemClickHandler (ev) {
         case itemName == 'unlike':
         case itemName == 'question':
         case itemName == 'works-for-me':
+        case itemName == 'meh':
             postMessage({key: 'predefined', value: itemName});
             toggleSendMenu();
             break;

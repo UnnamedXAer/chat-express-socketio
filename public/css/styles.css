@@ -38,7 +38,7 @@ body {
 
 header {
     display: flex;
-    height: 50px;
+    height: var(--header-height);
     width: 100%;
     margin: auto;
     flex-direction: row;

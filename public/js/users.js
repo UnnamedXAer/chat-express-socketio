@@ -10,7 +10,7 @@ class User {
 
 /**
  * Update list of user.
- * @param {User | String} user 
+ * @param {{} | String} user 
  */
 
 function updateUsersList (user) {
@@ -21,8 +21,7 @@ function updateUsersList (user) {
     else if (typeof user == 'object') {
         const userIndex = CHAT.usersOnline.findIndex(x => x.id == user.id);
         const newUser = new User(user);
-        if (userIndex == -1) {
-            // console.log('New user added to list. ', user);
+        if (userIndex == -1) { // on new user
             CHAT.usersOnline.push(newUser);
             const classes = ['user'];
             if (newUser.id == settings['userId']) {
@@ -30,13 +29,12 @@ function updateUsersList (user) {
             }
             $('#users-list').append($(`<li class="${classes.join(' ')}" id="${newUser.id}">${newUser.nick}<div class="info">connected on: ${toDate(newUser.connectedOn)}</div></li>`));
         }
-        else {
-            // console.log('User already on list - update. ', newUser);
+        else { // on user update
             CHAT.usersOnline[userIndex] = newUser;
             $(`#${newUser.id}`).html(`${newUser.nick}<div class="info">connected on: ${toDate(newUser.connectedOn)}</div>`);
         }
     }
-    else {
+    else { // on used disconnect
         // console.log('on: user-disconnected ', user); // user = id here
         CHAT.usersOnline = CHAT.usersOnline.filter(x => x.id != user);
         $('#'+user).remove();
